@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contenteditable Test</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h2 {
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    /* Styling the contenteditable div like an input box */
+    .editor {
+      background: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 150px;
+      font-size: 1rem;
+      line-height: 1.5;
+      outline: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+      /* Ensures line breaks render properly and wide text wraps */
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* Focus highlight ring */
+    .editor:focus {
+      border-color: #0066cc;
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+    }
+
+    /* Output log for testing */
+    .output-container {
+      margin-top: 24px;
+      padding: 12px;
+      background: #eee;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Editable Div Test</h2>
+  <p>Click inside the box to start typing. Notice how it automatically resizes downwards!</p>
+
+  <!-- The contenteditable div -->
+  <div class="editor" contenteditable="true">Click here to start typing...</div>
+
+  <!-- Real-time text output debugger -->
+  <div class="output-container">
+    <strong>Live innerText output:</strong>
+    <div id="log" style="margin-top: 8px; color: #444;">Click here to start typing...</div>
+  </div>
+
+  <script>
+    const editor = document.querySelector('.editor');
+    const log = document.getElementById('log');
+
+    // Update log on every character typed or deleted
+    editor.addEventListener('input', () => {
+      log.textContent = editor.innerText;
+    });
+  </script>
+
+</body>
+</html>
