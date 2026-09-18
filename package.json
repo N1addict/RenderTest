@@ -2,7 +2,7 @@
   "name": "rendertest",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "testDB.js",
   "scripts": {
     "start": "node testDB.js",
     "test": "echo \"Error: no test specified\" && exit 1"
