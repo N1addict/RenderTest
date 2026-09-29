@@ -26,7 +26,7 @@ async function run() {
     const collection = db.collection("testCollection");
 
     // insert a document
-    const result = await collection.insertOne({ message: "Hello World" });
+    const result = await collection.insertOne({ message: "Hello World 4" });
     console.log(`Document inserted with _id: ${result.insertedId}`);
     
   } finally {
