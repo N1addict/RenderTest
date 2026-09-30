@@ -1,9 +1,8 @@
 const express = require('express');
 
 const app = express();
+
 const PORT = process.env.PORT || 3000;
-
-
 const uri = process.env.MONGODB_URI;
 
 // Serves index.html automatically on '/'
