@@ -67,11 +67,11 @@ app.get('/test-insert', async (req, res) => {
     const result = await collection.insertOne({ message: "Hello World", timestamp: new Date() });
 
     console.log("*********************************************************************************************");
-    console.log("*********************************************************************************************");
+    console.log("********************************Document inserted!*******************************************");
     res.json({ message: "Document inserted!", id: result.insertedId });
     console.log("*********************************************************************************************");
     console.log("*********************************************************************************************");
-    
+
   } catch (err) {
     res.status(500).json({ error: "Insert failed" });
   }
