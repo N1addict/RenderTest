@@ -28,14 +28,22 @@ async function startServer() {
   try {
     await client.connect();
     await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
+    console.log("*********************************************************************************************");
+    console.log("*********************************************************************************************");
+    
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    
     const db = client.db("testDatabase");
     collection = db.collection("testCollection");
-
+    
     // Start Express server ONLY after DB connects
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+
+    console.log("*********************************************************************************************");
+    console.log("*********************************************************************************************");
+    
   } catch (err) {
     console.error("Failed to connect to MongoDB:", err);
     process.exit(1);
@@ -44,14 +52,26 @@ async function startServer() {
 
 // Basic health-check route for Render
 app.get('/', (req, res) => {
+  console.log("*********************************************************************************************");
+  console.log("*********************************************************************************************");
+  
   res.send('Server is running and connected to MongoDB!');
+
+  console.log("*********************************************************************************************");
+  console.log("*********************************************************************************************");
 });
 
 // Test insert endpoint
 app.get('/test-insert', async (req, res) => {
   try {
     const result = await collection.insertOne({ message: "Hello World", timestamp: new Date() });
+
+    console.log("*********************************************************************************************");
+    console.log("*********************************************************************************************");
     res.json({ message: "Document inserted!", id: result.insertedId });
+    console.log("*********************************************************************************************");
+    console.log("*********************************************************************************************");
+    
   } catch (err) {
     res.status(500).json({ error: "Insert failed" });
   }
