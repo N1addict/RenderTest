@@ -52,13 +52,10 @@ async function startServer() {
 
 // Basic health-check route for Render
 app.get('/', (req, res) => {
-  console.log("*********************************************************************************************");
-  console.log("*********************************************************************************************");
+  console.log("oooooooooooooooooooooooooooooServer is running and connected to MongoDB!oooooooooooooooooooooooo");
   
   res.send('Server is running and connected to MongoDB!');
 
-  console.log("*********************************************************************************************");
-  console.log("*********************************************************************************************");
 });
 
 // Test insert endpoint
@@ -66,11 +63,8 @@ app.get('/test-insert', async (req, res) => {
   try {
     const result = await collection.insertOne({ message: "Hello World", timestamp: new Date() });
 
-    console.log("*********************************************************************************************");
-    console.log("********************************Document inserted!*******************************************");
+    console.log("oooooooooooooooooooooooooooooDocument inserted!ooooooooooooooooooooooooooooooooooooooooooooooooo");
     res.json({ message: "Document inserted!", id: result.insertedId });
-    console.log("*********************************************************************************************");
-    console.log("*********************************************************************************************");
 
   } catch (err) {
     res.status(500).json({ error: "Insert failed" });
