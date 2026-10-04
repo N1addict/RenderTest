@@ -1,6 +1,6 @@
-import 'dotenv/config';
-import express from 'express';
-import { MongoClient, ServerApiVersion } from 'mongodb';
+require('dotenv').config();
+const express = require('express');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const app = express();
 app.use(express.json());
@@ -52,10 +52,13 @@ async function startServer() {
 
 // Basic health-check route for Render
 app.get('/', (req, res) => {
-  console.log("oooooooooooooooooooooooooooooServer is running and connected to MongoDB!oooooooooooooooooooooooo");
+  console.log("*********************************************************************************************");
+  console.log("*********************************************************************************************");
   
   res.send('Server is running and connected to MongoDB!');
 
+  console.log("*********************************************************************************************");
+  console.log("*********************************************************************************************");
 });
 
 // Test insert endpoint
@@ -63,8 +66,11 @@ app.get('/test-insert', async (req, res) => {
   try {
     const result = await collection.insertOne({ message: "Hello World", timestamp: new Date() });
 
-    console.log("oooooooooooooooooooooooooooooDocument inserted!ooooooooooooooooooooooooooooooooooooooooooooooooo");
+    console.log("*********************************************************************************************");
+    console.log("********************************Document inserted!*******************************************");
     res.json({ message: "Document inserted!", id: result.insertedId });
+    console.log("*********************************************************************************************");
+    console.log("*********************************************************************************************");
 
   } catch (err) {
     res.status(500).json({ error: "Insert failed" });
